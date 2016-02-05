@@ -51,4 +51,14 @@ defmodule MyList do
   defp _span(from, list = [head | _]) do
     _span(from, [head - 1 | list])
   end
+
+  def primes(max) do
+    for x <- span(2,max), prime?(x), do: x
+  end
+
+  defp prime?(2), do: true
+
+  defp prime?(num) do
+    !Enum.any?(2..(num-1), &(rem(num, &1) == 0))
+  end
 end
